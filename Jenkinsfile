@@ -19,14 +19,15 @@ pipeline {
     stages {
 
         stage('Build') {
-            steps {
-                echo "Building.. #${BUILD_ID}"
-                sh '''
-                    cd myapp
-                    pip3 install -r requirements.txt --break-system-packages
-                '''
-            }
-        }
+    steps {
+        echo "Building.. #${BUILD_ID}"
+        sh '''
+            apt-get update && apt-get install -y python3-pip
+            cd myapp
+            pip3 install -r requirements.txt --break-system-packages
+        '''
+    }
+}
 
         stage('Test') {
             steps {
