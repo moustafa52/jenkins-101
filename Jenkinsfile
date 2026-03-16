@@ -19,15 +19,15 @@ pipeline {
     stages {
 
         stage('Build') {
-    steps {
-        echo "Building.. #${BUILD_ID}"
-        sh '''
-            apt-get update && apt-get install -y python3-pip
-            cd myapp
-            pip3 install fire==0.4.0 --break-system-packages
-        '''
-    }
-}
+            steps {
+                echo "Building.. #${BUILD_ID}"
+                sh '''
+                    apt-get update && apt-get install -y python3-pip
+                    cd myapp
+                    pip3 install fire==0.6.0 --break-system-packages
+                '''
+            }
+        }
 
         stage('Test') {
             steps {
